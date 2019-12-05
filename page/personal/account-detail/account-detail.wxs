@@ -1,0 +1,6 @@
+var format = function (time_stamp) {
+  var d = getDate(time_stamp * 1000);
+  return d.toLocaleString()
+}
+
+module.exports.format = format

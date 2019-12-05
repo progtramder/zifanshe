@@ -1,0 +1,5 @@
+<template name="empty">
+  <view class="empty-page">
+    <text>{{content}}</text>
+  </view>
+</template>

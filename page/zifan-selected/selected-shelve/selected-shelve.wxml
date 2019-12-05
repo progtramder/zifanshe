@@ -1,0 +1,34 @@
+<view class="container">
+  <view class="page-body">
+    <view class="cover">
+      <image class="cover-image" src="{{cover}}"/>
+      <view class="overlap-icon iconfont icon-image" bindtap="addCover"/>
+    </view>
+    <view class="product-info-item">
+      <view>名称</view>
+      <input value="{{name}}" bindblur="getProductName" placeholder-class="placeholder" placeholder="产品名称" />
+    </view>
+    <view class="product-info-item">
+      <textarea cursor-spacing="30" value="{{brief}}" bindblur="getProductBrief" placeholder-style="font-style:italic;" placeholder-class="placeholder" placeholder="产品简介"></textarea>
+    </view>
+    <view class="selected-type">
+      <view>精选类型</view>
+      <radio-group bindchange="typeChange">
+        <label wx:for="{{selectedTypes}}" wx:key="item">
+          <radio color="#F56C6C" value="{{item.value}}" checked="{{item.value==type}}"/>{{item.name}}
+        </label>
+      </radio-group>
+    </view>
+    <view class="product-container">
+      <view wx:if="{{type=='video'}}" class="product-content">
+        <video src="{{video}}" controls>
+          <cover-image bindtap="chooseMovie" class="overlap-image" src="/image/movie.png" />
+        </video>
+      </view>
+      <view wx:else class="product-content">
+        <image bindtap="chooseWxFile" class="document-image" src="/image/wx_document.png"/>
+      </view>
+    </view>
+    <view class="float-bar" bindtap="onFinish">完成</view>
+  </view>
+</view>

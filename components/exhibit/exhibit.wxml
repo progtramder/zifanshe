@@ -1,0 +1,8 @@
+<navigator url="{{url}}" class="exhibit-item">
+  <image src="{{imgpath}}"></image>
+  <view> 
+    <view class="exhibit-item-title">{{title}}</view>
+    <view class="exhibit-item-body">{{body}}</view>
+    <view class="exhibit-item-footer">{{footer}}</view>
+  </view>
+</navigator>

@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "管理员",
+  "usingComponents": {
+    "tab-view": "/components/tab-view/index"
+  }
+}

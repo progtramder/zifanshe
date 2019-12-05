@@ -1,0 +1,32 @@
+@import "../common/index.wxss";
+
+
+.header {
+  position: fixed;
+  width: 100%;
+  height: 80rpx;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  background-color:white;
+  display: flex;
+  justify-content: space-around;
+}
+.header-item {
+  line-height: 80rpx;
+  color: gray;
+}
+
+.header-item-HL {
+  font-weight: bold;
+  line-height: 80rpx;
+  border-bottom-style: solid;
+  border-bottom-color:#F56C6C;
+}
+
+.list-view-show{
+  margin-top: 85rpx;
+}
+.list-view-hide{
+  display: none;
+}

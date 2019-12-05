@@ -1,0 +1,33 @@
+@import "../../common/index.wxss";
+
+.container {
+  background-color: white;
+}
+
+.order-item{
+  position: relative;
+  padding: 15rpx 30rpx;
+  text-align: right;
+  line-height: 2em
+}
+.order-item:after{
+  content: " ";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 1px;
+  border-bottom: 1rpx solid #d9d9d9;
+  left: 30rpx
+}
+
+.list-item {
+  display: flex;
+  font-size: 14px;
+  justify-content: space-between;
+}
+
+.imcome {
+  color: red;
+  font-size: 14px;
+}

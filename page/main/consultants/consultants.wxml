@@ -1,0 +1,15 @@
+<view class="page-container">
+  <view class="consultants-page-body">
+    <view class="consultants-page-title">
+    </view>
+    <block wx:for="{{consultants}}" wx:key="item">
+      <navigator url="../consultant-profile/consultant-profile?id={{item._id}}" class="consultants-view-item">
+        <image src="{{item.avatar}}"></image>
+        <view> 
+          <view class="consultant-name">{{item.name}}</view>
+          <view class="consultant-intro">{{item.introduction}}</view>
+        </view>
+      </navigator>
+    </block>
+  </view>
+</view>

@@ -1,0 +1,25 @@
+<view class="container">
+  <view class="page-body">
+    <view class="cover">
+      <image bindtap="previewCover" src="{{product.cover}}"/>
+      <view>{{product.name}}</view>
+    </view>
+    <view class="product-brief">{{product.brief}}</view>
+    <view wx:if="{{showPrice}}" class="product-price-container">
+      <view class="product-price-wrapper">
+        <view class="product-price">￥{{product.price/100}}</view>
+        <view wx:if="{{product.original_price!=product.price}}" class="product-price-original">原价（{{product.original_price / 100}}）</view>
+      </view>
+      <view wx:if="{{product.price_desc&&product.price_desc!=''}}" class="price_description">({{product.price_desc}})</view>
+    </view>
+    <view class="product-container">
+      <view class="product-content-title">产品详情</view>
+      <view class="product-content">
+        <block wx:for="{{product.detail}}" wx:key="item">
+          <image bindtap="imageTap" data-imgpath="{{item}}" mode="widthFix" class="product-image" src="{{item}}"/>
+        </block>
+      </view>
+    </view>
+    <view wx:if="{{showPrice}}" class="float-bar" bindtap="onPay">￥{{product.price/100}} 立即购买</view>
+  </view>
+</view>

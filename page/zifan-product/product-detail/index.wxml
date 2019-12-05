@@ -1,0 +1,40 @@
+<view class="container">
+  <view class="page-body">
+    <view class="cover">
+      <image src="{{product.cover}}"/>
+      <view>{{product.name}}</view>
+    </view>
+    <view class="product-brief">{{product.brief}}</view>
+    <view class="product-price">￥{{product.price/100}}</view>
+    <view class="product-container">
+      <view class="product-content">
+        <block wx:for="{{product.detail}}" wx:key="item">
+          <image wx:if="{{item.type=='image'}}" mode="widthFix" class="product-image" src="{{item.src}}"/>
+          <view wx:if="{{item.type=='video'}}" class="product-video">
+            <video src="{{item.src}}" controls/>
+          </view>
+        </block>
+      </view>
+    </view>
+    <view class="customer-info">
+      <view class="input-box">
+        <input
+          class="input"
+          placeholder-class="place-holder" 
+          placeholder="您的姓名" 
+          bindinput="getName"
+        />
+      </view>
+      <view class="input-box">
+        <input
+          class="input"
+          type='number'
+          placeholder-class="place-holder" 
+          placeholder="您的手机号" 
+          bindinput="getPhoneNumber"
+        />
+      </view>
+    </view>
+    <view class="buy-button" bindtap="onPay">￥{{product.price/100}} 立即购买</view>
+  </view>
+</view>

@@ -1,0 +1,31 @@
+<import src="../../common/empty.wxml" />
+<block wx:if="{{isEmpty}}">
+  <template is="empty" data="{{content: '空空如也～'}}"/>
+</block>
+<view class="container">
+  <view class="page-body">
+    <view
+      class="{{transform.convert(item.deleting)}}"
+      wx:for="{{order}}"
+      data-order="{{item.out_trade_no}}" 
+      wx:key="{{item}}"
+      wx:for-index="index"
+      data-index="{{index}}"
+      bindtap="queryorder"
+      bindlongpress="longPress">
+        <view class="{{transform.transform(item.status).class}}">
+          {{transform.transform(item.status).name}}
+        </view>
+        <view class="list-item" >
+          <text>订单号</text>
+          <text class="text">{{item.out_trade_no}}</text>
+        </view>
+        <view class="list-item" >
+          <text>商品</text>
+          <text class="text">{{item.body}}</text>
+        </view>
+        <view class="delete-button" data-index="{{index}}" catchtap="deleteItem">删除</view>
+    </view>
+  </view>
+  <wxs src="./order.wxs" module="transform" />
+</view>

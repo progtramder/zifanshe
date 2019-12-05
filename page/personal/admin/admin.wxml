@@ -1,0 +1,28 @@
+<view class="page-container">
+<view class="consultants-page-body">
+  <tab-view bindtouchstart="touchStart" bindtouchend="touchEnd" tabs="{{category}}" adjustIndex="2" bind:change="tabChanged">
+    <scroll-view slot="待审核顾问" scroll-y="true" lower-threshold="0" class="scoll-v" bindscrolltolower="reachBottom">
+      <navigator wx:for="{{consultantsVerifying}}" wx:key="item" url="../verify/verify?id={{item._id}}" class="consultants-view-item">
+        <image src="{{item.avatar}}"></image>
+        <view> 
+          <view class="consultant-name">{{item.name}}</view>
+          <view class="consultant-intro">{{item.introduction}}</view>
+        </view>
+      </navigator>
+    </scroll-view>
+    <scroll-view slot="已审核顾问" scroll-y="true" lower-threshold="0" class="scoll-v" bindscrolltolower="reachBottom">
+      <navigator wx:for="{{consultantApproved}}" wx:key="item" url="../consultant-detail/index?id={{item._id}}" class="consultants-view-item">
+        <image src="{{item.avatar}}"></image>
+        <view> 
+          <view class="consultant-name">{{item.name}}</view>
+          <view class="consultant-intro">{{item.introduction}}</view>
+        </view>
+      </navigator>
+    </scroll-view>
+  </tab-view>
+  <view class="loading-more" wx:if="{{loadingMore}}">
+    <image src="/image/loading.gif"/>
+    <view>加载更多...</view>
+  </view>
+</view>
+</view>

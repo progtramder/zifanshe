@@ -1,0 +1,42 @@
+.page-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.8
+}
+
+.page-container > image {
+  width: 180rpx;
+  height: 180rpx;
+}
+
+.page-container > text {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.auth-button {
+  margin-top: 100rpx;
+  width: 70%;
+  height: 80rpx;
+  background-image: linear-gradient(to bottom, #fedf58 , #f9c607);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-button image {
+  width: 1em;
+  height: 1em;
+  margin-right: 5rpx;
+}
+
+.auth-button text {
+  font-size: 0.7em;
+  font-weight: 5rpx;
+}

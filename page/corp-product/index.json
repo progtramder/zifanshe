@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "泰勒梅卓越馆",
+  "usingComponents": {
+    "exhibit-item": "/components/exhibit/exhibit"
+  }
+}

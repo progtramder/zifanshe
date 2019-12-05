@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "我的产品",
+  "usingComponents": {
+    "exhibit-item": "/components/exhibit2/exhibit2"
+  }
+}

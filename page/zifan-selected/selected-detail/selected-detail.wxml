@@ -1,0 +1,18 @@
+<view class="container">
+  <view class="page-body">
+    <view class="cover">
+      <image src="{{product.cover}}"/>
+      <view>{{product.name}}</view>
+    </view>
+    <view class="product-brief">{{product.brief}}</view>
+    <view class="product-container">
+      <view wx:if="{{product.type=='video'}}" class="product-content">
+        <video src="{{product.video}}" controls></video>
+      </view>
+      <view wx:if="{{product.type=='document'}}" class="product-content">
+        <image class="document-image" src="/image/document.png" />
+        <image class="overlap-image" src="/image/play.png" bindtap="viewDocument"/>
+      </view>
+    </view>
+  </view>
+</view>

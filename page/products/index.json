@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "子繁智铺",
+  "usingComponents": {
+    "exhibit-item": "/components/exhibit/exhibit"
+  }
+}

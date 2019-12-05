@@ -1,0 +1,32 @@
+.tab-h {
+  height: 90rpx;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  background: white;
+  white-space: nowrap;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+}
+
+.tab-item {
+  line-height: 80rpx;
+  display: inline-block;
+  color: gray;
+  margin-left: 50rpx;
+}
+
+.tab-item.active {
+  color: black;
+  font-weight: bold;
+  border-bottom-style: solid;
+  border-bottom-color:#F56C6C;
+}
+.tab-item:last-child {
+  margin-right: 50rpx;
+}
+.tab-content {
+  margin-top: 80rpx;
+}

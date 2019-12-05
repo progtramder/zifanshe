@@ -1,0 +1,30 @@
+<view class="container">
+  <view class="page-body">
+    <view class="page-section">
+      <view class="page-body-info">
+        <image class="consultant-avatar" src="{{consultant.avatar}}"></image>
+        <view class="consultant-name">{{consultant.name}}</view>
+      </view>
+    </view>
+    <view class="page-section">
+      <view class="consultants-intro">
+        <text class="section-title">顾问介绍</text>
+        <view class="intro-text">{{consultant.introduction}}</view>
+        <image mode="widthFix" class="intro-detail-image" src="{{consultant.introImage}}"/>
+      </view>
+    </view>
+    <view wx:if="{{product.length}}" class="product-section">
+      <view class="product-section-text">顾问产品</view>
+        <block wx:for="{{product}}" wx:key="item">
+          <view class="product-item">
+            <exhibit-item url="../../products/product-detail/product-detail?id={{item._id}}"
+              imgpath="{{item.cover}}"
+              title="{{item.name}}"
+              body="{{item.brief}}"
+              footer=""
+            />
+          </view>
+        </block>
+    </view>
+  </view>
+</view>

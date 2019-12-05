@@ -1,0 +1,13 @@
+<view class="container">
+  <view class="page-body">
+    <view class='account-detail'>
+      <view bindtap='accountDetail'>...</view>
+    </view>
+    <view class="balance-section">
+      <image src='/image/balance.jpeg'>￥</image>
+      <text>账户余额</text>
+      <text class='balance'>￥ {{balance}}</text>
+      <button type="default" class="button" bindtap="withdraw">提现</button>
+    </view>
+</view>
+</view>

@@ -1,0 +1,38 @@
+<view class="page-container">
+  <swiper indicator-dots="true" circular="true" bindchange="swiperItemChanged"
+    bindtap="swiperItemTap" autoplay="true" interval="3000" duration="1000">
+    <block wx:for="{{bulletins}}" wx:key="item">
+      <swiper-item>
+        <image src="{{item.imageSrc}}" class="swiper-item" />
+      </swiper-item>
+    </block>
+  </swiper>
+  <scroll-view class="scroll-view_H" scroll-x="true">
+    <block wx:for="{{category}}" wx:key="item">
+      <view class="category-block">
+        <view id="{{item.id}}" class="category-item" bindtap="categorySelect">
+          <image class="category-image" src="{{item.imageSrc}}"></image>
+          <view>{{item.name}}</view>
+        </view>
+      </view>
+    </block>
+  </scroll-view>
+  <view class="consultants-view">
+    <view class="consultants-view-title">
+      <view class="consultants-view-title-L">人气顾问</view>
+      <navigator url="consultants/consultants?category=all" class="consultants-view-title-R">全部顾问</navigator>
+    </view>
+    <block wx:for="{{consultants}}" wx:key="item">
+      <navigator url="consultant-profile/consultant-profile?id={{item._id}}" class="consultants-view-item">
+        <image src="{{item.avatar}}"></image>
+        <view> 
+          <view class="consultant-name">{{item.name}}</view>
+          <view class="consultant-intro">{{item.introduction}}</view>
+        </view>
+      </navigator>
+    </block>
+  </view>
+  <block wx:if="{{!isConsultant}}">
+    <navigator url="consultant-info/consultant-info?apply=true" class="consultant-join">顾问入驻</navigator>
+  </block>
+</view>

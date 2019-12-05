@@ -1,0 +1,39 @@
+<view class="container">
+  <view class="page-body">
+    <view class="header">
+      <view 
+        class="{{currentView=='zifan-select'?'header-item-HL':'header-item'}}"
+        bindtap="tapZifanSelect"
+      >
+        子繁精选
+      </view>
+      <view 
+        class="{{currentView=='consultant-product'?'header-item-HL':'header-item'}}"
+        bindtap="tapConsultantProduct"
+      >
+        顾问产品
+      </view>
+    </view>
+
+    <view class="{{currentView=='zifan-select'?'list-view-show':'list-view-hide'}}">
+      <view wx:for="{{selected}}" wx:key="item" class="product-item">
+        <exhibit-item url="/page/zifan-selected/selected-detail/selected-detail?id={{item._id}}"
+          imgpath="{{item.cover}}"
+          title="{{item.name}}"
+          body="{{item.brief}}"
+          footer=""
+        />
+      </view>
+    </view>
+    <view class="{{currentView=='consultant-product'?'list-view-show':'list-view-hide'}}">
+      <view wx:for="{{product}}" wx:key="item" class="product-item">
+        <exhibit-item url="product-detail/product-detail?id={{item._id}}"
+          imgpath="{{item.cover}}"
+          title="{{item.name}}"
+          body="{{item.brief}}"
+          footer=""
+        />
+      </view>
+    </view>
+  </view>
+</view>

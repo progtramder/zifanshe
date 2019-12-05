@@ -1,0 +1,77 @@
+{
+  "pages": [
+    "page/main/index",
+    "page/main/authentication/authentication",
+    "page/products/index",
+    "page/personal/index",
+    "page/main/consultants/consultants",
+    "page/main/consultant-profile/consultant-profile",
+    "page/main/web-view/web-view",
+    "page/main/consultant-info/consultant-info",
+    "page/personal/admin/admin",
+    "page/personal/verify/verify",
+    "page/personal/order/order",
+    "page/personal/message/message",
+    "page/personal/comment/comment",
+    "page/products/product-detail/product-detail",
+    "page/personal/myproduct/myproduct",
+    "page/personal/product-shelve/product-shelve",
+    "page/personal/account/account",
+    "page/payorder/index",
+    "page/personal/account-detail/account-detail",
+    "page/zifan-selected/index",
+    "page/zifan-selected/selected-shelve/selected-shelve",
+    "page/zifan-selected/selected-detail/selected-detail",
+    "page/corp-product/index",
+    "page/corp-product/pay/index",
+    "page/corp-product/product-detail/index",
+    "components/rich-editor-plus/index",
+    "page/zifan-product/index",
+    "page/zifan-product/product-detail/index",
+    "page/zifan-product/pay/index",
+    "page/personal/contact/index",
+    "components/tab-view/index",
+    "page/personal/consultant-detail/index"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "子繁社",
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "backgroundColor": "#F8F8F8",
+    "onReachBottomDistance": 50
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#000000",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "page/main/index",
+        "iconPath": "image/index.jpg",
+        "selectedIconPath": "image/index_HL.jpg",
+        "text": "首页"
+      },
+      {
+        "pagePath": "page/products/index",
+        "iconPath": "image/product.png",
+        "selectedIconPath": "image/product_HL.jpg",
+        "text": "子繁智铺"
+      },
+      {
+        "pagePath": "page/personal/index",
+        "iconPath": "image/personal.png",
+        "selectedIconPath": "image/personal_HL.jpg",
+        "text": "我的"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "connectSocket": 10000,
+    "uploadFile": 10000,
+    "downloadFile": 10000
+  },
+  "debug": false,
+  "sitemapLocation": "sitemap.json"
+}

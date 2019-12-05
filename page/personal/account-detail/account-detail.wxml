@@ -1,0 +1,25 @@
+<import src="../../common/empty.wxml" />
+<block wx:if="{{isEmpty}}">
+  <template is="empty" data="{{content: '空空如也～'}}"/>
+</block>
+<view class="container">
+  <view class="page-body">
+    <view
+      class="order-item"
+      wx:for="{{order}}"
+      wx:key="{{item}}">
+        <view class="imcome">
+          +{{item.total_fee / 100}}元
+        </view>
+        <view class="list-item" >
+          <text>交易时间</text>
+          <text class="text">{{time.format(item.time_stamp)}}</text>
+        </view>
+        <view class="list-item" >
+          <text>商品</text>
+          <text class="text">{{item.body}}</text>
+        </view>
+    </view>
+    <wxs src="./account-detail.wxs" module="time" />
+  </view>
+</view>

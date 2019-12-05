@@ -1,0 +1,74 @@
+<view class="container">
+  <view class="page-body">
+    <view class="page-section">
+      <view class="page-body-info">
+        <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}"></image>
+        <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+      </view>
+    </view>
+    <block wx:if="{{isConsultant}}">
+      <view class="page-section">
+        <view class="navigator-box">
+          <navigator url="../main/consultant-info/consultant-info" class="navigator">
+            <image class="navigator-img-front" src="/image/consultant.jpg"></image>
+            <view class="navigator-text">我是顾问</view>
+            <view class="navigator-arrow"></view>
+          </navigator>
+          <navigator url="myproduct/myproduct?openId={{openId}}" class="navigator">
+            <image class="navigator-img-front" src="/image/product_HL.jpg"></image>
+            <view class="navigator-text">我的产品</view>
+            <view class="navigator-arrow"></view>
+          </navigator>
+          <navigator url="contact/index" class="navigator">
+            <image class="navigator-img-front" src="/image/consultant.jpg"></image>
+            <view class="navigator-text">联系子繁</view>
+            <view class="navigator-arrow"></view>
+          </navigator>
+        </view>
+      </view>
+    </block>
+    <view class="page-section">
+      <view class="navigator-box">
+        <navigator url="account/account?openId={{openId}}" class="navigator">
+            <image class="navigator-img-front" src="/image/account.jpg"></image>
+            <view class="navigator-text">我的账户</view>
+            <view class="navigator-arrow"></view>
+          </navigator>
+        <navigator url="order/order" class="navigator">
+          <image class="navigator-img-front" src="/image/order.jpg"></image>
+          <view class="navigator-text">我的订单</view>
+          <view wx:if="{{newOrder}}"class="red-dot"></view>
+          <view class="navigator-arrow"></view>
+        </navigator>
+        <navigator url="message/message" class="navigator">
+          <image class="navigator-img-front" src="/image/message.jpg"></image>
+          <view class="navigator-text">我的消息</view>
+          <view wx:if="{{newMessage}}"class="red-dot"></view>
+          <view class="navigator-arrow"></view>
+        </navigator>
+        <navigator url="comment/comment" class="navigator">
+          <image class="navigator-img-front" src="/image/comment.jpg"></image>
+          <view class="navigator-text">我的评价</view>
+          <view wx:if="{{newComment}}"class="red-dot"></view>
+          <view class="navigator-arrow"></view>
+        </navigator>
+      </view>
+    </view>
+    
+    <view wx:if="{{isAdmin}}" class="page-section">
+      <view class="navigator-box">
+        <navigator url="admin/admin" class="navigator">
+          <image class="navigator-img-front" src="/image/personal_HL.jpg"></image>
+          <view class="navigator-text">我是管理员</view>
+          <view wx:if="{{newVerifying}}"class="red-dot"></view>
+          <view class="navigator-arrow"></view>
+        </navigator>
+        <navigator url="/page/zifan-selected/index" class="navigator">
+          <image class="navigator-img-front" src="/image/personal_HL.jpg"></image>
+          <view class="navigator-text">子繁精选</view>
+          <view class="navigator-arrow"></view>
+        </navigator>
+      </view>
+    </view>
+  </view>
+</view>

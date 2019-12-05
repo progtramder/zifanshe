@@ -1,0 +1,31 @@
+@import "../common/index.wxss";
+
+.bar-item {
+  color: white;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.product-item {
+  position: relative;
+  transition: .5s
+}
+.product-item-deleting{
+  background-color: white;
+  padding: 10rpx 20rpx 10rpx;
+  border-bottom-color: #f0f0f0;
+  border-bottom-width: .1rpx;
+  border-bottom-style: solid;
+  position: relative;
+  transform: translateX(-200rpx);
+  transition: .5s
+}
+
+.selected-item {
+  background-color: white;
+  border-bottom-color: #f0f0f0;
+  border-bottom-width: .1rpx;
+  border-bottom-style: solid;
+}

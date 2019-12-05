@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "子繁精选",
+  "usingComponents": {
+    "exhibit-item": "/components/exhibit2/exhibit2"
+  }
+}

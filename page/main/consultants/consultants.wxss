@@ -1,0 +1,11 @@
+@import "../index.wxss";
+.consultants-page-body {
+  background-color: white;
+}
+.consultants-page-title {
+  border-bottom-color: #f0f0f0;
+  border-bottom-width: .1rpx;
+  border-bottom-style: solid;
+  display: flex;
+  flex-direction: row;
+}

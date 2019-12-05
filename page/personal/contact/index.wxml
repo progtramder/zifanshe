@@ -1,0 +1,8 @@
+<view class="container">
+  <view class="page-body">
+    <button class="call-center" open-type="contact" bindcontact="handleContact">
+    <image src="/image/contact.png"/>
+    </button>
+    <view>联系客服</view>
+  </view>
+</view>

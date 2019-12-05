@@ -1,0 +1,21 @@
+@import "../../common/index.wxss";
+
+.message-section {
+    padding: 20rpx;
+    margin: 20rpx;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10rpx;
+}
+.message-body {
+    font-family: 'Times New Roman', Times, serif
+}
+
+.message-time {
+    font-size: 0.6em;
+    font-style: italic;
+    color: gray;
+}

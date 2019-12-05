@@ -1,0 +1,24 @@
+.call-center {
+  width: 150rpx;
+  height: 150rpx;
+  border-style: none;
+  border-width: 1rpx;
+  border-radius: 50%;
+  position: relative;
+}
+button::after {
+  border: none;
+}
+.call-center image {
+  display: inline-block;
+  width: 160rpx;
+  height: 160rpx;
+  position: absolute;
+  top: -5rpx;
+  left: -5rpx;
+  z-index: 3;
+}
+.page-body {
+  background-color: #FCFCFC;
+  text-align: center;
+}

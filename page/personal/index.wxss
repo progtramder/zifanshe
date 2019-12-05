@@ -1,0 +1,34 @@
+@import "../common/index.wxss";
+.page-body-info {
+  padding-bottom: 0;
+  height: 250rpx;
+}
+.userinfo-avatar {
+  border-radius: 50%;
+  width: 150rpx;
+  height: 150rpx;
+}
+.userinfo-nickname {
+  margin-top: 20rpx;
+}
+
+.red-dot {
+  position: relative;
+}
+.red-dot:after {
+  content: "";
+  display: block;
+  background-color: red;
+  height: 20rpx;
+  width: 20rpx;
+  border-radius: 50%;
+}
+.callcenter {
+  border-width: 0;
+  width:100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  background-color: #FFFFFF;
+  font-size: 32rpx;
+  box-sizing: border-box;
+}

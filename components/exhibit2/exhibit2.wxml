@@ -1,0 +1,18 @@
+<view 
+  hover-class="navigator-hover"
+  class="{{deleting?'exhibit-item-wrap-deleting':'exhibit-item-wrap'}}"
+  bindlongpress="longPress"
+  bindtap="itemTap" 
+  bindtouchend="itemTouchEnd"
+  url="{{url}}" 
+>
+  <view class="exhibit-item">
+    <image src="{{imgpath}}"></image>
+    <view> 
+      <view class="exhibit-item-title">{{title}}</view>
+      <view class="exhibit-item-body">{{body}}</view>
+      <view class="exhibit-item-footer">{{footer}}</view>
+    </view>
+  </view>
+  <view class="delete-button" catchtap="deleteItem">删除</view>
+</view>

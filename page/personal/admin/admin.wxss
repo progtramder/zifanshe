@@ -1,0 +1,32 @@
+@import "../../main/index.wxss";
+.consultants-page-body {
+  background-color: white;
+}
+.consultants-page-title {
+  border-bottom-color: #f0f0f0;
+  border-bottom-width: .1rpx;
+  border-bottom-style: solid;
+  display: flex;
+  flex-direction: row;
+}
+.scoll-v {
+  height: 100%;
+}
+
+.loading-more {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 5rpx;
+  color: gray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30rpx;
+}
+.loading-more image {
+  width: 32rpx;
+  height: 32rpx;
+  box-sizing: border-box;
+  margin-right: 10rpx;
+}

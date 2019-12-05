@@ -1,0 +1,95 @@
+@import "../../common/index.wxss";
+
+.page-body-info {
+  padding-bottom: 20rpx;
+  height: 200rpx;
+}
+.consultant-avatar {
+  border-radius: 50%;
+  width: 180rpx;
+  height: 180rpx;
+}
+.consultant-info-box {
+  padding: 20rpx;
+  margin-top: 20rpx;
+  background-color: white;
+}
+
+.consultant-info-item {
+  display: flex;
+  flex-direction: row;
+  height: 2rem;
+  align-items: center;
+  border-bottom-color: #f0f0f0;
+  border-bottom-width: .1rpx;
+  border-bottom-style: solid;
+}
+
+.consultant-info-item > view {
+  width: 200rpx;
+}
+
+.radio-title {
+  line-height: 2rem;
+}
+
+.consultant-info-item input {
+  color: gray;
+  margin-left: 50rpx;
+}
+.intro-text {
+  margin-top: 10rpx;
+  font-size: 0.9em;
+  white-space: pre-wrap;
+  color: gray;
+  width: 100%;
+}
+
+.intro-detail-block {
+  background-color: white;
+}
+.intro-detail {
+  margin: 0 20rpx;
+}
+.intro-image {
+  width: 100%;
+  height: 0;
+}
+
+.category {
+  padding: 20rpx;
+  width: 100%;
+  margin-top: 20rpx;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.category-item {
+  width: 355rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 28rpx;
+}
+
+.category-item image {
+  margin-right: 20rpx;
+  height: 60rpx;
+  width: 60rpx;
+}
+
+.approve-button {
+  background-color: #F56C6C;
+  color: white;
+  margin-top: 100rpx;
+  width: 90%;
+  height: 100rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}

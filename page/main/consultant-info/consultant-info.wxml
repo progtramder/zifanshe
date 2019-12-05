@@ -1,0 +1,77 @@
+<view class="container">
+  <view class="page-body">
+    <view class="avatar-block">
+      <image class="consultant-avatar" bindtap="changeAvatar" src="{{avatar}}"></image>
+    </view>
+    <view class="consultant-info-box">
+      <view class="consultant-info-item">
+        <view>姓名</view>
+        <input value="{{name}}" bindinput="getName" placeholder-class="placeholder" placeholder="真实姓名" />
+      </view>
+      <view class="consultant-info-item">
+        <view>手机号</view>
+        <input value="{{phoneNumber}}" bindinput="getPhoneNumber" type="number" placeholder-class="placeholder" placeholder="常用的手机号码" />
+      </view>
+      <view class="consultant-info-item">
+        <view>微信号</view>
+        <input value="{{wxNumber}}" bindinput="getWxNumber" placeholder-class="placeholder" placeholder="微信号码" />
+      </view>
+      <view class="consultant-info-item">
+        <view>专业</view>
+        <input value="{{specialty}}" bindinput="getSpecialty" placeholder-class="placeholder" placeholder="你的专业" />
+      </view>
+      <view class="consultant-info-item">
+        <view>职业</view>
+        <input value="{{occupation}}" bindinput="getOccupation" placeholder-class="placeholder" placeholder="你目前的职业" />
+      </view>
+      <view class="consultant-info-item">
+        <view>梦想</view>
+        <input value="{{dream}}" bindinput="getDream" placeholder-class="placeholder" placeholder="谈谈你的梦想" />
+      </view>
+      <view class="consultant-info-item">
+        <view>座右铭</view>
+        <input value="{{motto}}" bindinput="getMotto" placeholder-class="placeholder" placeholder="你的座右铭是什么" />
+      </view>
+      <view class="consultant-info-item">
+        <view>产品</view>
+        <input value="{{product}}" bindinput="getProduct" placeholder-class="placeholder" placeholder="拟服务的产品" />
+      </view>
+      <view class="consultant-info-item">
+        <view>推荐人</view>
+        <input value="{{referral}}" bindinput="getReferral" placeholder-class="placeholder" placeholder="子繁社会员推荐人" />
+      </view>
+
+      <text class="radio-title">是否愿意参加子繁社职业转型系列课程?</text>
+      <view class="consultant-info-item">
+        <radio-group bindchange="radioChange">
+          <label>
+            <radio color="#F56C6C" value="yes" checked="{{zifanCourse=='yes'}}"/>是
+          </label>
+          <label>
+            <radio color="#F56C6C" value="no" checked="{{zifanCourse=='no'}}"/>否
+          </label>
+        </radio-group>
+      </view>
+    </view>
+    <view class="consultant-info-box">
+      <view>自我介绍（200字以内）</view>
+      <textarea cursor-spacing="30" value="{{introduction}}" bindinput="getIntroduction" class="intro-text" maxlength="200" placeholder-class="placeholder" placeholder="请介绍一下你自己" />
+    </view>
+
+    <view class="intro-detail-block">
+      <view class="intro-detail">
+        <image wx:if="{{introImage!=''}}" class="intro-image" mode="widthFix" src="{{introImage}}"/>
+        <image wx:if="{{introImage==''}}" class="overlap-image" src="/image/img-add.png" bindtap="addIntroImage"/>
+        <view wx:if="{{introImage!=''}}" class="image-delete iconfont icon-close" bindtap="deleteIntroImage"></view>
+      </view>
+    </view>
+
+    <button wx:if="{{apply}}" class="submit" bindtap="submit">
+      <text>提交</text>
+    </button>
+    <button wx:else class="submit" bindtap="save">
+      <text>保存</text>
+    </button>
+    
+  </view>
+</view>

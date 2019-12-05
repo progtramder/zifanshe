@@ -1,0 +1,76 @@
+.exhibit-item-wrap {
+  padding: 10rpx 20rpx;
+  position: relative;
+  transition: .5s;
+}
+.exhibit-item-wrap-deleting {
+  padding: 10rpx 20rpx;
+  position: relative;
+  transform: translateX(-200rpx);
+  transition: .5s
+}
+.exhibit-item {
+  height: 250rpx;
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  transition: .5s;
+}
+.exhibit-item image {
+  height: 250rpx;
+  width: 330rpx;
+  flex: none;
+  border-radius: 10rpx;
+}
+.exhibit-item > view {
+  margin-left: 20rpx;
+  position: relative;
+}
+
+.exhibit-item-title {
+  margin-top: 10rpx;
+  font-weight: bold;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.exhibit-item-body {
+  font-size: 25rpx;
+  color: gray;
+  margin-top: 10rpx;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.exhibit-item-footer {
+  position: absolute;
+  top: 100%;
+  transform: translateY(-100%);
+  font-size: 21rpx;
+  color: gray;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.delete-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  width: 200rpx;
+  height: 100%;
+  top: 0rpx;
+  right: -200rpx;
+  background: #F56C6C;
+  color: #fff;
+}
+
+.navigator-hover {
+  opacity: 0.5;
+}

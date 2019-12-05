@@ -1,0 +1,28 @@
+<import src="../common/empty.wxml" />
+<block wx:if="{{isEmpty}}">
+  <template is="empty" data="{{content: '暂时还没有精选上架～'}}"/>
+</block>
+<view wx:else class="container">
+  <view class="page-body">
+    <view
+      wx:for="{{product}}" 
+      wx:for-index="index" 
+      wx:key="item" 
+      class="selected-item"
+    >
+      <exhibit-item url="selected-shelve/selected-shelve?id={{item._id}}"
+        candelete="true"
+        data-index="{{index}}"
+        id="item{{index}}"
+        bind:delete="deleteItem"
+        imgpath="{{item.cover}}"
+        title="{{item.name}}"
+        body="{{item.brief}}"
+        footer=""
+      />
+    </view>
+  </view>
+</view>
+<view class="float-bar">
+  <view bindtap="shelve" class="bar-item">精选上架</view>
+</view>

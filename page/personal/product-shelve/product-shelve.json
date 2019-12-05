@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "",
+  "usingComponents": {
+    "rich-editor": "/components/rich-editor/rich-editor"
+  }
+}
