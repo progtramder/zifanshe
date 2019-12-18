@@ -21,6 +21,7 @@
         footer=""
       />
     </view>
+    <view style="margin-bottom:120rpx"/>
   </view>
 </view>
 <view class="float-bar">

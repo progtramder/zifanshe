@@ -6,7 +6,7 @@ Page({
   },
 
   onShow: function () {
-   this.reLoad()
+   this.refresh()
   },
 
   onReachBottom() {
@@ -91,7 +91,7 @@ Page({
       currentView: 'zifan-select'
     })
 
-    this.reLoad()
+    this.refresh()
   },
 
   tapConsultantProduct() {
@@ -99,6 +99,6 @@ Page({
       currentView: 'consultant-product'
     })
 
-    this.reLoad()
+    this.refresh()
   },
 })

@@ -6,10 +6,10 @@
     </view>
     <view class="product-info-item">
       <view>名称</view>
-      <input value="{{name}}" bindblur="getProductName" placeholder-class="placeholder" placeholder="产品名称" />
+      <input value="{{name}}" bindinput="getProductName" placeholder-class="placeholder" placeholder="产品名称" />
     </view>
     <view class="product-info-item">
-      <textarea cursor-spacing="30" value="{{brief}}" bindblur="getProductBrief" placeholder-style="font-style:italic;" placeholder-class="placeholder" placeholder="产品简介"></textarea>
+      <textarea maxlength="-1" cursor-spacing="30" value="{{brief}}" bindinput="getProductBrief" placeholder-style="font-style:italic;" placeholder-class="placeholder" placeholder="产品简介"></textarea>
     </view>
     <view class="selected-type">
       <view>精选类型</view>

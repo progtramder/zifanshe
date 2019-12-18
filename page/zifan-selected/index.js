@@ -14,15 +14,18 @@ Page({
   onShow: function () {
     wx.showNavigationBarLoading()
     const db = wx.cloud.database();
-    db.collection('selected').limit(10).field({ 
+    db.collection('selected').skip(
+      this.data.product.length
+    ).limit(10).field({ 
       detail: false 
     }).get().then((res) => {
       wx.hideNavigationBarLoading()
-      this.setData(
-        {
-          product: res.data,
-          isEmpty: res.data.length == 0
-        })
+      let pdt = this.data.product
+      pdt.push(...res.data)
+      this.setData({
+        product: pdt,
+        isEmpty: pdt.length == 0
+      })
     })
   },
 

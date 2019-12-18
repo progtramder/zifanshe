@@ -103,11 +103,11 @@ Page({
   },
 
   getProductBrief(e) {
-    this.setData({ brief: e.detail.value })
+    this.data.brief = e.detail.value
   },
 
   getProductName(e) {
-    this.setData({ name: e.detail.value })
+    this.data.name = e.detail.value
   },
 
   onFinish() {
@@ -154,7 +154,7 @@ Page({
       }))
     }
     
-    if (this.data.type == 'document' && !this.data.video.match(/^cloud:\/\//)) {
+    if (this.data.type == 'document' && !this.data.document.match(/^cloud:\/\//)) {
       promises.push(new Promise((resolve, reject) => {
         wx.cloud.uploadFile({
           cloudPath: `document/${productId}`,
@@ -204,6 +204,7 @@ Page({
             type: this.data.type,
             video: this.data.type == 'video' ? res[0] : '',
             document: this.data.type == 'video' ? '' : res[1],
+            status: 'showing'
           },
         }).then(res => {
           //Finally we successfully shelved the product
@@ -214,7 +215,7 @@ Page({
           this.alert('数据库写入失败，请检查网络')
         })
       } else {
-        db.collection('selected').doc(productId).update({
+        db.collection('selected').doc(productId).update({ 
           data: {
             cover: res[2],
             name: this.data.name,

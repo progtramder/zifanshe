@@ -44,6 +44,10 @@ Component({
         this.setData({
           deleting: false
         })
+      } else {
+        wx.navigateTo({
+          url: this.data.url
+        })
       }
     },
 
@@ -55,11 +59,11 @@ Component({
       }
     },
 
-    itemTouchEnd() {
+    itemTouchEnd(e) {
       if (!this.data.deleting) {
-        wx.navigateTo({
+        /*wx.navigateTo({
           url: this.data.url
-        })
+        })*/
       }
     },
 
