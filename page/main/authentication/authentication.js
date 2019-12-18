@@ -1,8 +1,10 @@
+const app = getApp()
 Page({
   bindGetUserInfo(e) {
     if (e.detail.userInfo) {
-      wx.switchTab({
-        url: '../index',
+      app.setUserInfo(e.detail.userInfo)
+      wx.navigateTo({
+        url: '../consultant-info/consultant-info?apply=true',
       })
     }
   }

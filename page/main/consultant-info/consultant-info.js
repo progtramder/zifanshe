@@ -176,16 +176,16 @@ Page({
           showCancel: false,
           confirmColor: '#F56C6C',
           success: (res) => {
-            app.setUserType('consultant')
             if (this.data.apply) {
               wx.switchTab({
-                url: '../index',
+                url: '../../personal/index',
               })
             }
           }
         })
       },
-      fail: (res) => {
+      fail: (err) => {
+        console.log(err)
         this.alert('数据库写入失败，请检查网络')
       },
       complete: () => {
@@ -235,7 +235,8 @@ Page({
           confirmColor: '#F56C6C'
         })
       },
-      fail: (res) => {
+      fail: (err) => {
+        console.log(err)
         this.alert('数据库写入失败，请检查网络')
       },
       complete: () => {

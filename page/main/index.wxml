@@ -32,7 +32,4 @@
       </navigator>
     </block>
   </view>
-  <block wx:if="{{!isConsultant}}">
-    <navigator url="consultant-info/consultant-info?apply=true" class="consultant-join">顾问入驻</navigator>
-  </block>
 </view>

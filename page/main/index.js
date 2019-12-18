@@ -10,7 +10,6 @@ Page({
   },
 
   data: {
-    isConsultant: true,
     currentSwiperId: 0,
     category: config.category
   },
@@ -43,28 +42,26 @@ Page({
     }
     wx.stopPullDownRefresh()
   },
+
   onShow() {
-    this.setData({ isConsultant: app.getUserType() == 'consultant'})
     this.getHotConsultants()
   },
 
   async init() {
     this.reInit = false
     try {
+      this.getBulletins()
+      
       let res = await wx.cloud.callFunction({
         name: 'login'
       })
       let openId = res.result.OPENID
       app.setOpenId(openId)
       const db = wx.cloud.database()
-      res = await db.collection('consultant').where({ _id: openId }).count()
-      if (res.total == 0) {
-        app.setUserType('user')
-        this.setData({ isConsultant: false })
-      }
       res = await db.collection('admin').where({ who: openId }).count()
-      if (res.total > 0) {
-        app.setAdmin(true)
+      const isAdmin = res.total > 0 ? true : false
+      app.setAdmin(isAdmin)
+      if (isAdmin) {
         config.updateRedDotAdmin()
       } else {
         config.updateRedDot()
@@ -76,23 +73,7 @@ Page({
   },
 
   onLoad: function (options) {
-    wx.getSetting({
-      success : (res) => {
-        if (res.authSetting['scope.userInfo']) {
-          this.init()
-          this.getBulletins()
-          wx.getUserInfo({
-            success: (res) => {
-              app.setUserInfo(res.userInfo)
-            }
-          })
-        } else {
-          wx.reLaunch({
-            url: 'authentication/authentication',
-          })
-        }
-      }
-    })
+    this.init()
   },
   
   getBulletins() {

@@ -111,14 +111,3 @@ swiper {
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
 }
-
-.consultant-join {
-  margin: 50rpx;
-  background-image: linear-gradient(to bottom, #fedf58 , #f9c607);
-  text-align: center;
-  color: white;
-  padding: 20rpx;
-  border-top-left-radius: 15rpx;
-  border-bottom-right-radius: 15rpx;
-}
-

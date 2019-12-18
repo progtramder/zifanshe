@@ -12,8 +12,7 @@ App({
   globalData: {
     openId: null,
     userInfo: null,
-    userType: 'consultant', //user or consultant
-    isAdmin: false,
+    isAdmin: null,
     iOS: false,
     iphoneShowPrice: true
   },
@@ -41,13 +40,6 @@ App({
 
   setUserInfo(userInfo) {
     this.globalData.userInfo = userInfo
-  },
-
-  getUserType() {
-    return this.globalData.userType
-  },
-  setUserType(userType) {
-    this.globalData.userType = userType
   },
 
   setAdmin() {
