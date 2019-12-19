@@ -42,10 +42,10 @@ App({
     this.globalData.userInfo = userInfo
   },
 
-  setAdmin() {
-    this.globalData.isAdmin = true
+  setAdmin(isAdmin) {
+    this.globalData.isAdmin = isAdmin
   },
-  isAdmin(userType) {
+  isAdmin() {
     return this.globalData.isAdmin
   }
 })
