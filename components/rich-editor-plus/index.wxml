@@ -1,4 +1,3 @@
-<!--components/xing-editor.wxml-->
 <view
   class="editor-wrapper"
   style="min-height: {{windowHeight}}rpx"
@@ -8,6 +7,7 @@
     <view class="editor-add iconfont icon-text" data-index="-1" bindtap="addText"></view>
     <view class="editor-add iconfont icon-image" data-index="-1" bindtap="addImage"></view>
     <view class="editor-add iconfont icon-video" data-index="-1" bindtap="addVideo"></view>
+    <view class="editor-add iconfont icon-document" data-index="-1" bindtap="addDocument"></view>
   </view>
   <block wx:for="{{nodeList}}" wx:for-item="node" wx:for-index="index" wx:key="{{index}}">
     <view class="editor-node-wrapper">
@@ -18,6 +18,7 @@
           auto-height="true"
           cursor-spacing="50"
           data-index="{{index}}"
+          maxlength='-1'
           bindinput="onTextInput">
         </textarea>
       </block>
@@ -33,12 +34,23 @@
       <block wx:if="{{node.type === 'video'}}">
         <video class="editor-video" src="{{node.src}}" controls></video>
       </block>
+      <block wx:if="{{node.type === 'document'}}">
+        <view class="editor-document">
+          <image src="{{mod.docImage(node.src)}}" bindtap="documentTap" data-docpath="{{node.src}}"/>
+        </view>
+      </block>
       <view class="editor-delete iconfont icon-close" data-index="{{index}}" bindtap="deleteNode"></view>
+      <view wx:if="{{locker=='true'&&(node.type === 'document'||node.type === 'video')}}" 
+        class="{{mod.transform(node.locker)}}" 
+        data-index="{{index}}" bindtap="lock">
+      </view>
     </view>
     <view class="editor-add-wrapper">
       <view class="editor-add iconfont icon-text" data-index="{{index}}" bindtap="addText"></view>
       <view class="editor-add iconfont icon-image" data-index="{{index}}" bindtap="addImage"></view>
       <view class="editor-add iconfont icon-video" data-index="{{index}}" bindtap="addVideo"></view>
+      <view class="editor-add iconfont icon-document" data-index="{{index}}" bindtap="addDocument"></view>
     </view>
   </block>
 </view>
+<wxs src="./index.wxs" module="mod" />

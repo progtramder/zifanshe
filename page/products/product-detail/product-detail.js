@@ -1,31 +1,76 @@
+const regeneratorRuntime = require("../../common/runtime")
 const app = getApp()
 Page({
-  onLoad: function (options) {
-    wx.showNavigationBarLoading()
-    const db = wx.cloud.database();
-    db.collection('product').where({
-      _id: options.id
-    }).get().then((res) => {
-      wx.hideNavigationBarLoading()
-      let product = res.data[0]
-      wx.setNavigationBarTitle({
-        title: product.name
-      })
+  data: {
+    lockVideo: true
+  },
+  onLoad(options) {
+    this.data.product_id = options.id
+  },
+
+  async onShow() {
+    try {
+      wx.showNavigationBarLoading()
+      if (!app.getOpenId()) {
+        const res = await wx.cloud.callFunction({ name: 'login' })
+        const { openId } = res.result
+        app.setOpenId(openId)
+      }
+
+      let product = this.data.product
+      const db = wx.cloud.database();
+      if (!product) {
+        let res = await db.collection('product').doc(this.data.product_id).get()
+        product = res.data
+        wx.setNavigationBarTitle({ title: product.name })
+      }
+
+      //判断用户是否已经购买该产品
+      let purchased = false
+      if (product.price > 0) {
+        const res = await db.collection('order').where({
+          _openid: app.getOpenId(),
+          product: product._id,
+          status: 1 //已支付
+        }).get()
+        if (res.data.length > 0) {
+          for (let i = 0; i < product.detail.length; i++) {
+            if (product.detail[i].locker === true) {
+              product.detail[i].locker = false
+            }
+          }
+          purchased = true
+        }
+      }
 
       //如果不是iOS平台或者是showprice设置成true的时候显示价格按钮
       let showPrice = false
       if (!app.isApple() || app.getShowPrice()) {
         showPrice = true
       }
-      this.setData(
-        {
-          product,
-          showPrice
-        })
-    })
+
+      this.setData({
+        product,
+        purchased,
+        showPrice
+      })
+    } catch (err) {
+      wx.showModal({
+        content: err.errMsg,
+        showCancel: false,
+        confirmColor: '#F56C6C',
+        confirmText: '知道了'
+      })
+    } finally {
+      wx.hideNavigationBarLoading()
+    }
   },
   
   onPay() {
+    if (this.data.purchased) {
+      return
+    }
+
     wx.showLoading({ title: '正在下单'});
     let id = this.data.product._id;
     wx.cloud.callFunction({
@@ -54,11 +99,88 @@ Page({
       current: this.data.product.cover
     })
   },
-  imageTap(e) {
+  previewDetail(e) {
+    let urls = []
+    this.data.product.detail.forEach(item => {
+      if (item.type == 'image') {
+        urls.push(item.src)
+      }
+    })
     wx.previewImage({
-      urls: this.data.product.detail,
+      urls,
       current: e.currentTarget.dataset.imgpath
     })
+  },
+
+  async viewDocument(e) {
+    const document = e.currentTarget.dataset.document
+    const locker = document.locker
+    const product = this.data.product
+    if (product.price > 0 && locker) {
+      const db = wx.cloud.database()
+      const res = await db.collection('order').where({
+        _openid: app.getOpenId(),
+        product: product._id,
+        status: 1 //已支付
+      }).get()
+      if (res.data.length == 0) {
+        wx.showModal({
+          content: '付费内容，购买后可解锁',//'付费内容，输入验证码或购买后可解锁',
+          showCancel: false,
+          confirmColor: '#F56C6C',
+          confirmText: '知道了'
+        })
+        return
+      }
+    }
+    const docPath = document.src
+    wx.showLoading({
+      title: '正在下载文件',
+    })
+    wx.cloud.downloadFile({
+      fileID: docPath,
+      success: function (res) {
+        wx.openDocument({
+          filePath: res.tempFilePath,
+        })
+      },
+      fail: function (res) {
+        console.log(res);
+      },
+      complete: function () {
+        wx.hideLoading()
+      }
+    })
+  },
+
+  dismiss() {
+    //当mask接收到touchmove消息时默认会传递给其他节点，这样会导致
+    //视频误打开，产生严重bug，所以此处截获后不再传递
+  },
+  unlockVideo(e) {
+    this.setData({
+      lockVideo: false
+    })
+  },
+
+  async playVideo(e) {
+    const product = this.data.product
+    const db = wx.cloud.database()
+    const res = await db.collection('order').where({
+      _openid: app.getOpenId(),
+      product: product._id,
+      status: 1 //已支付
+    }).get()
+    if (res.data.length == 0) {
+      wx.showModal({
+        content: '付费内容，购买后可解锁',//'付费内容，输入验证码或购买后可解锁',
+        showCancel: false,
+        confirmColor: '#F56C6C',
+        confirmText: '知道了'
+      })
+    } else {
+      this.unlockVideo()
+    }
   },
 
   onShareAppMessage: function () {

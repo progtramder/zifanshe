@@ -1,4 +1,5 @@
 const util = require('../../common/util')
+const regeneratorRuntime = require("../../common/runtime")
 Page({
 
   /**
@@ -11,7 +12,8 @@ Page({
     price: "",
     original_price: "",
     price_desc: "",
-    detail: []
+    detail: [],
+    deletedFiles: [] //对于视频和图片两种类型删除数据库的同时还要删除文件
   },
 
   /**
@@ -62,155 +64,110 @@ Page({
   },
 
   getProductBrief(e) {
-    this.setData({ brief: e.detail.value })
+    this.data.brief = e.detail.value
   },
 
   getProductPrice(e) {
-    if (e.detail.value != '' && e.detail.value < 0.01) {
-      this.alert("金额太小")
-      return
-    }
     this.setData({ price: e.detail.value })
   },
 
   getProductOriginalPrice(e) {
-    if (e.detail.value != '' && e.detail.value < 0.01) {
-      this.alert("金额太小")
-      return
-    }
-    this.setData({ original_price: e.detail.value })
+    this.data.original_price = e.detail.value
   },
 
   getPriceDesc(e) {
-    this.setData({ price_desc: e.detail.value })
+    this.data.price_desc = e.detail.value
   },
 
   getProductName(e) {
-    this.setData({ name: e.detail.value })
+    this.data.name = e.detail.value
   },
 
-  onFinish() {
-    if (this.data.name == "" || this.data.price == "" || this.data.cover == "") {
-      this.alert('请完整填写内容')
+  async onFinish() {
+    if (this.data.name == '') {
+      this.alert('产品名称不能为空')
+      return
+    } else if (this.data.cover == '') {
+      this.alert('请选择封面图片')
       return
     }
 
-    //Update or Shelve a new product
-    let newShelve = false
-    let productId = this.data.productId
-    if (!productId) {
-      newShelve = true
-      productId = util.randomCode()
-      this.setData({
-        productId: productId
-      })
-    }
-    wx.showLoading()
-    let promises = []
-    if (!this.data.cover.match(/^cloud:\/\//)) {
-      let prom = new Promise((resolve, reject) => {
-        wx.cloud.uploadFile({
-          cloudPath: `image/product/${productId}-cover`,
-          filePath: this.data.cover,
-          success: res => {
-            resolve(
-              {
-                file: res.fileID, 
-                index: -1
-              })
-          },
-          fail: err => {
-            reject(err)
+    try {
+      wx.showLoading()
+      const db = wx.cloud.database()
+      let productId = this.data.productId
+      if (!productId) {
+        const res = await db.collection('product').add({
+          data: {
           },
         })
-      })
-      promises.push(prom)
-    }
-    this.data.detail.forEach((e, index)=> {
-      if (!e.match(/^cloud:\/\//)) {
-        let prom = new Promise((resolve, reject) => {
+        productId = res._id
+      }
+
+      const suffix = (file) => {
+        let suffix = file.match(/\.\w+$/)
+        if (suffix) return suffix[0]
+        return ''
+      }
+
+      if (!this.data.cover.match(/^cloud:\/\//)) {
+        const res = await new Promise((resolve, reject) => {
           wx.cloud.uploadFile({
-            cloudPath: `image/product/${productId}-${new Date().getTime()}`,
-            filePath: e,
+            cloudPath: `product/${productId}-cover-${new Date().getMilliseconds()}${suffix(this.data.cover)}`,
+            filePath: this.data.cover,
             success: res => {
-              resolve(
-                {
-                  file: res.fileID, 
-                  index: index
-                })
+              resolve({ file: res.fileID })
             },
             fail: err => {
               reject(err)
             },
           })
         })
-        promises.push(prom)
+        this.data.cover = res.file
       }
-    })
-    
-    Promise.all(promises).then(res => {
-      let detailTemp = this.data.detail
-      res.forEach(e => {
-        if (e.index == -1) {
-          this.setData({
-            cover: e.file
+      for (let index = 0; index < this.data.detail.length; index++) {
+        const e = this.data.detail[index]
+        if (e.type != 'text' && !e.src.match(/^cloud:\/\//)) {
+          const res = await new Promise((resolve, reject) => {
+            wx.cloud.uploadFile({
+              cloudPath: `product/${productId}-${Date.now()}${suffix(e.src)}`,
+              filePath: e.src,
+              success: res => {
+                resolve({ file: res.fileID })
+              },
+              fail: err => {
+                reject(err)
+              },
+            })
           })
-        } else {
-          detailTemp[e.index] = e.file
+          e.src = res.file
         }
-      })
-      this.setData({
-        detail: detailTemp
+      }
+
+      await db.collection('product').doc(productId).update({
+        data: {
+          cover: this.data.cover,
+          name: this.data.name,
+          brief: this.data.brief,
+          price: this.data.price * 100,
+          original_price: this.data.original_price == '' ? this.data.price * 100 : this.data.original_price * 100,
+          price_desc: this.data.price_desc,
+          detail: this.data.detail
+        },
       })
 
-      //Now we have successfully upload the images,
-      //save the data to db
-      const db = wx.cloud.database()
-      if (newShelve) {
-        db.collection('product').add({
-          data: {
-            _id: productId,
-            cover: this.data.cover,
-            name: this.data.name,
-            brief: this.data.brief,
-            price: this.data.price * 100,
-            original_price: this.data.original_price == '' ? this.data.price * 100 : this.data.original_price * 100,
-            price_desc: this.data.price_desc,
-            detail: this.data.detail
-          },
-        }).then(res => {
-          //Finally we successfully shelved the product
-          wx.hideLoading()
-          wx.navigateBack()
-        }).catch(err => {
-          wx.hideLoading()
-          this.alert('数据库写入失败，请检查网络')
-        })
-      } else {
-        db.collection('product').doc(productId).update({
-          data: {
-            cover: this.data.cover,
-            name: this.data.name,
-            brief: this.data.brief,
-            price: this.data.price * 100,
-            original_price: this.data.original_price == '' ? this.data.price * 100 : this.data.original_price * 100,
-            price_desc: this.data.price_desc,
-            detail: this.data.detail
-          },
-        }).then(res => {
-          //Finally we successfully updated the product
-          wx.hideLoading()
-          wx.navigateBack()
-        }).catch(err => {
-          wx.hideLoading()
-          this.alert('数据库更新失败，请检查网络')
+      if (this.data.deletedFiles.length > 0) {
+        wx.cloud.deleteFile({
+          fileList: this.data.deletedFiles
         })
       }
-    }).catch(err => {
-      wx.hideLoading()
-      this.alert('文件上传失败，请检查网络')
+      wx.navigateBack()
+    } catch (err) {
+      this.alert(err.errMsg)
       console.log(err)
-    })
+    } finally {
+      wx.hideLoading()
+    }
   },
 
   alert(tilte) {
@@ -220,13 +177,20 @@ Page({
       confirmColor: '#F56C6C'
     })
   },
-  detailChanged(event) {
-    let imgList = []
-    event.detail.forEach((e) => {
-      imgList.push(e.attrs.src)
-    })
+  addDetail(event) {
+    let nodeList = event.detail
     this.setData({
-      detail: imgList
+      detail: nodeList
     })
   },
+
+  deleteDetail(event) {
+    const { nodeList, node } = event.detail
+    this.setData({
+      detail: nodeList
+    })
+    if (node.type != 'text' && node.src.match(/^cloud:\/\//)) {
+      this.data.deletedFiles.push(node.src)
+    }
+  }
 })

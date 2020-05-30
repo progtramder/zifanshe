@@ -13,13 +13,33 @@
       <view wx:if="{{product.price_desc&&product.price_desc!=''}}" class="price_description">({{product.price_desc}})</view>
     </view>
     <view class="product-container">
-      <view class="product-content-title">产品详情</view>
+      <view style="height:20rpx" />
       <view class="product-content">
         <block wx:for="{{product.detail}}" wx:key="item">
-          <image bindtap="imageTap" data-imgpath="{{item}}" mode="widthFix" class="product-image" src="{{item}}"/>
+          <view wx:if="{{item.type=='text'}}" class="product-text">{{item.content}}</view>
+          <image 
+            wx:if="{{item.type=='image'}}" 
+            mode="widthFix" 
+            class="product-image" 
+            src="{{item.src}}"
+            bindtap="previewDetail"
+            data-imgpath="{{item.src}}"
+          />
+          <view wx:if="{{item.type=='video'}}" class="product-video">
+            <video src="{{item.src}}" controls />
+            <image wx:if="{{item.locker}}" class="video-locker" src="/image/locker.png"/>
+            <view wx:if="{{item.locker&&lockVideo}}" catchtouchmove="dismiss" class="video-mask">
+              <view class="mask-button" catchtap="playVideo" />
+            </view>
+          </view>
+          <view wx:if="{{item.type=='document'}}" class="product-document">
+            <image class="document-image" src="{{index.docImage(item.src)}}" bindtap="viewDocument" data-document="{{item}}" />
+            <image wx:if="{{item.locker}}" class="document-locker" src="/image/locker.png"/>
+          </view>
         </block>
       </view>
     </view>
-    <view wx:if="{{showPrice}}" class="float-bar" bindtap="onPay">￥{{product.price/100}} 立即购买</view>
+    <view wx:if="{{showPrice&&product.price>0}}" class="float-bar" bindtap="onPay">￥{{product.price/100}} {{purchased?'已购买':'立即购买'}}</view>
   </view>
 </view>
+<wxs src="./product-detail.wxs" module="index" />

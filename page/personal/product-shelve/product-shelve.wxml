@@ -6,25 +6,25 @@
     </view>
     <view class="product-info-item">
       <view>名称</view>
-      <input value="{{name}}" bindblur="getProductName" placeholder-class="placeholder" placeholder="产品名称" />
+      <input value="{{name}}" bindinput="getProductName" placeholder-class="placeholder" placeholder="产品名称" />
     </view>
     <view class="product-info-item">
       <view>价格￥</view>
-      <input type="digit" value="{{price}}" bindblur="getProductPrice" placeholder-class="placeholder" placeholder="产品价格"></input>
+      <input type="digit" value="{{price}}" bindinput="getProductPrice" placeholder-class="placeholder" placeholder="产品价格"></input>
     </view>
     <view class="product-info-item">
       <view>原价￥</view>
-      <input type="digit" value="{{original_price}}" bindblur="getProductOriginalPrice" placeholder-class="placeholder" placeholder="产品原价"></input>
+      <input type="digit" value="{{original_price}}" bindinput="getProductOriginalPrice" placeholder-class="placeholder" placeholder="产品原价"></input>
     </view>
     <view class="product-info-item">
       <view>描述</view>
-      <input value="{{price_desc}}" bindblur="getPriceDesc" placeholder-class="placeholder" placeholder="价格描述，例如：早鸟价等" />
+      <input value="{{price_desc}}" bindinput="getPriceDesc" placeholder-class="placeholder" placeholder="价格描述，例如：早鸟价等" />
     </view>
     <view class="product-info-item">
-      <textarea value="{{brief}}" bindblur="getProductBrief" placeholder-class="placeholder" placeholder="产品简介"></textarea>
+      <textarea value="{{brief}}" bindinput="getProductBrief" placeholder-class="placeholder" placeholder="产品简介"></textarea>
     </view>
     <view class="product-content-title">产品详情</view>
-    <rich-editor id="rich_editor" bind:changed="detailChanged"/>
+    <rich-editor locker="{{price>0?'true':'false'}}" id="rich_editor" bind:add="addDetail" bind:delete="deleteDetail"/>
     <view class="float-bar" bindtap="onFinish">完成</view>
   </view>
 </view>

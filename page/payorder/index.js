@@ -53,6 +53,7 @@ Page({
     }).then(res => {
       this.getOrder(out_trade_no, () => {
         wx.hideLoading()
+        wx.navigateBack()
       })
     })    
   },
