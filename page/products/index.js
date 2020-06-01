@@ -6,7 +6,7 @@ Page({
   },
 
   onShow: function () {
-   this.refresh()
+    this.reLoad()
   },
 
   onReachBottom() {

@@ -2,7 +2,6 @@ const regeneratorRuntime = require("../../common/runtime")
 const app = getApp()
 Page({
   data: {
-    lockVideo: true
   },
   onLoad(options) {
     this.data.product_id = options.id
@@ -112,26 +111,18 @@ Page({
     })
   },
 
-  async viewDocument(e) {
-    const document = e.currentTarget.dataset.document
+  async viewDocument(event) {
+    const document = event.currentTarget.dataset.document
     const locker = document.locker
     const product = this.data.product
     if (product.price > 0 && locker) {
-      const db = wx.cloud.database()
-      const res = await db.collection('order').where({
-        _openid: app.getOpenId(),
-        product: product._id,
-        status: 1 //已支付
-      }).get()
-      if (res.data.length == 0) {
-        wx.showModal({
-          content: '付费内容，购买后可解锁',//'付费内容，输入验证码或购买后可解锁',
-          showCancel: false,
-          confirmColor: '#F56C6C',
-          confirmText: '知道了'
-        })
-        return
-      }
+      wx.showModal({
+        content: '付费内容，购买后可解锁',//'付费内容，输入验证码或购买后可解锁',
+        showCancel: false,
+        confirmColor: '#F56C6C',
+        confirmText: '知道了'
+      })
+      return
     }
     const docPath = document.src
     wx.showLoading({
@@ -153,33 +144,18 @@ Page({
     })
   },
 
-  dismiss() {
-    //当mask接收到touchmove消息时默认会传递给其他节点，这样会导致
-    //视频误打开，产生严重bug，所以此处截获后不再传递
-  },
-  unlockVideo(e) {
-    this.setData({
-      lockVideo: false
-    })
-  },
-
-  async playVideo(e) {
+  async playVideo(event) {
+    const video = event.currentTarget.dataset.video
+    const locker = video.locker
     const product = this.data.product
-    const db = wx.cloud.database()
-    const res = await db.collection('order').where({
-      _openid: app.getOpenId(),
-      product: product._id,
-      status: 1 //已支付
-    }).get()
-    if (res.data.length == 0) {
+    if (product.price > 0 && locker) {
       wx.showModal({
         content: '付费内容，购买后可解锁',//'付费内容，输入验证码或购买后可解锁',
         showCancel: false,
         confirmColor: '#F56C6C',
         confirmText: '知道了'
       })
-    } else {
-      this.unlockVideo()
+      return
     }
   },
 

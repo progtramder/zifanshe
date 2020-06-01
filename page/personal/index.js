@@ -3,6 +3,21 @@ const config = require('../common/config')
 const regeneratorRuntime = require('../common/runtime')
 const app = getApp()
 TabPage({
+  async onShow() {
+    let isAdmin = app.isAdmin()
+    if (isAdmin == null) {
+      res = await db.collection('admin').where({ who: openId }).count()
+      isAdmin = res.total > 0 ? true : false
+      app.setAdmin(isAdmin)
+    }
+
+    this.setData({
+      isAdmin,
+    })
+
+    isAdmin ? config.updateRedDotAdmin(this) : config.updateRedDot(this)
+  },
+
   async onLoad() {
     try {
       wx.showNavigationBarLoading()
@@ -20,20 +35,10 @@ TabPage({
       res = await db.collection('consultant').where({ _id: openId }).count()
       const isConsultant = res.total > 0 ? true : false
 
-      let isAdmin = app.isAdmin()
-      if (isAdmin == null) {
-        res = await db.collection('admin').where({ who: openId }).count()
-        isAdmin = res.total > 0 ? true : false
-        app.setAdmin(isAdmin)
-      }
-
       this.setData({
-        isAdmin,
         isConsultant,
         openId
       })
-
-      isAdmin ? config.updateRedDotAdmin(this) : config.updateRedDot(this)
     } finally {
       wx.hideNavigationBarLoading()
     }

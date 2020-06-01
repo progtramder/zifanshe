@@ -26,10 +26,10 @@
             data-imgpath="{{item.src}}"
           />
           <view wx:if="{{item.type=='video'}}" class="product-video">
-            <video src="{{item.src}}" controls />
+            <video src="{{item.locker?'':item.src}}" controls />
             <image wx:if="{{item.locker}}" class="video-locker" src="/image/locker.png"/>
-            <view wx:if="{{item.locker&&lockVideo}}" catchtouchmove="dismiss" class="video-mask">
-              <view class="mask-button" catchtap="playVideo" />
+            <view wx:if="{{item.locker}}" class="video-mask">
+              <image src="/image/play-fake.png" class="mask-button" bindtap="playVideo" data-video="{{item}}" />
             </view>
           </view>
           <view wx:if="{{item.type=='document'}}" class="product-document">
