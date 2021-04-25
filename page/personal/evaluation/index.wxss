@@ -1,0 +1,51 @@
+page {
+  background-color: #FBFBFB;
+}
+
+.hover {
+  opacity: 0.5
+}
+
+.invite-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  color: gray;
+  font-weight: bold;
+  font-size: 35rpx;
+}
+
+button::after {
+  border-style: none;
+}
+.body-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 50rpx 0;
+}
+.nav-item {
+  height: 120rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-style: solid;
+  border-width: 5rpx;
+  border-color:grey;
+  margin: 0 50rpx 30rpx;
+  border-radius: 10rpx;
+  color: gray;
+  font-weight: bold;
+  font-size: 35rpx;
+}
+.icon {
+  width: 50rpx;
+  height: 50rpx;
+  box-sizing: border-box;
+  margin-right: 20rpx;
+}
+.seperator {
+  height: 30rpx;
+}

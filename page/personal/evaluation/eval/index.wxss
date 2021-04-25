@@ -1,0 +1,82 @@
+.eval-item-wrapper {
+  background-color: white;
+  margin-top: 5rpx;
+  padding: 20rpx;
+}
+
+.factor {
+  font-weight: bold;
+  font-size: 35rpx;
+  color: purple;
+}
+.definition {
+  color: gray;
+  font-size: 28rpx;
+  padding-left: 20rpx;
+}
+
+.eval-sub-item-wrapper {
+  margin-top: 20rpx;
+  padding-left: 20rpx;
+}
+
+.sub-item-desc {
+  font-size: 28rpx;
+  font-weight: bold;
+}
+.radio {
+  margin: 10rpx 10rpx 10rpx 0;
+  font-size: 26rpx;
+  color: grey;
+  display: flex;
+}
+
+.radio-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.popup {
+  background-color: white;
+  position: fixed;
+  width: 90%;
+  top: 50%;
+  left: 5%;
+  z-index: 102;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10rpx;
+}
+
+.seperator {
+  height: 30rpx;
+}
+
+.evaluator-info-item {
+  padding-top: 10rpx;
+  border-color: gray;
+  border-width: 1rpx;
+  border-style: solid;
+  background-color: white;
+  width: 90%;
+  height: 75rpx;
+}
+.evaluator-info-item input {
+  padding-left: 20rpx;
+  height: 75rpx;
+}
+.evaluator-info-item picker {
+  padding-left: 20rpx;
+  height: 75rpx;
+}
+.picker {
+  line-height: 75rpx;
+  color: black;
+}
+
+.picker.unselected {
+  color: gray;
+}

@@ -39,5 +39,6 @@ function TabPage(obj) {
 }
 
 module.exports = {
-  TabPage
+  TabPage,
+  alert
 };

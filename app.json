@@ -12,7 +12,7 @@
     "page/personal/verify/verify",
     "page/personal/order/order",
     "page/personal/message/message",
-    "page/personal/comment/comment",
+    "page/personal/evaluation/index",
     "page/products/product-detail/product-detail",
     "page/personal/myproduct/myproduct",
     "page/personal/product-shelve/product-shelve",
@@ -31,7 +31,9 @@
     "page/zifan-product/pay/index",
     "page/personal/contact/index",
     "components/tab-view/index",
-    "page/personal/consultant-detail/index"
+    "page/personal/consultant-detail/index",
+    "page/personal/evaluation/eval-report/index",
+    "page/personal/evaluation/eval/index"
   ],
   "window": {
     "navigationBarTextStyle": "black",

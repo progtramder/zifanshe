@@ -1,0 +1,34 @@
+<view class="container">
+  <view class="page-body">
+    <view wx:for="{{result['自我认知能力']}}" wx:for-index="index1" wx:key="item" class="eval-item-wrapper">
+      <view class="factor">{{item.factor}}</view>
+      <view class="definition">{{item.definition}}</view>
+      <view wx:for="{{item.subItem}}" wx:for-index="index2" wx:key="item" class="eval-sub-item-wrapper">
+        <view class="sub-item-desc">{{item.demention}}:</view>
+        <radio-group data-index="{{index1}}-{{index2}}" data-part="自我认知能力" class="radio-group" bindchange="radioChange">
+          <view class="radio" wx:for="{{choices}}" wx:for-index="index3" wx:key="item">
+            <radio color="#0084FF" value="{{index3}}" checked="{{index3==result['自我认知能力'][index1].subItem[index2].score-1}}"/>
+            <view>{{item}}</view>
+          </view>
+        </radio-group>
+      </view>
+    </view>
+    <view wx:for="{{result['专业能力']}}" wx:for-index="index1" wx:key="item" class="eval-item-wrapper">
+      <view class="factor">{{item.factor}}</view>
+      <view class="definition">{{item.definition}}</view>
+      <view wx:for="{{item.subItem}}" wx:for-index="index2" wx:key="item" class="eval-sub-item-wrapper">
+        <view class="sub-item-desc">{{item.demention}}:</view>
+        <radio-group data-index="{{index1}}-{{index2}}" data-part="专业能力" class="radio-group" bindchange="radioChange">
+          <view class="radio" wx:for="{{choices}}" wx:for-index="index3" wx:key="item">
+            <radio color="#0084FF" value="{{index3}}" checked="{{index3==result['专业能力'][index1].subItem[index2].score-1}}"/>
+            <view>{{item}}</view>
+          </view>
+        </radio-group>
+      </view>
+    </view>
+  </view>
+</view>
+<view style="height:120rpx;"/>
+<view class="float-bar">
+  <view bindtap="submitEval" class="bar-item">提交</view>
+</view>

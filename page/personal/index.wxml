@@ -41,9 +41,9 @@
           <view wx:if="{{newMessage}}"class="red-dot"></view>
           <view class="navigator-arrow"></view>
         </navigator>
-        <navigator wx:if="{{isConsultant}}" url="comment/comment" class="navigator">
+        <navigator wx:if="{{isConsultant}}" url="evaluation/index" class="navigator">
           <image class="navigator-img-front" src="/image/comment.jpg"></image>
-          <view class="navigator-text">我的评价</view>
+          <view class="navigator-text">我的测评</view>
           <view wx:if="{{newComment}}"class="red-dot"></view>
           <view class="navigator-arrow"></view>
         </navigator>

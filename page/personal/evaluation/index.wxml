@@ -1,0 +1,23 @@
+<view class="container">
+  <view class="page-body">
+    <view class="body-wrapper">
+      <view class="seperator"/>
+      <navigator url="eval/index?consultant={{openId}}&name={{name}}" class="nav-item">
+        <image class="icon" src="/image/self-eval.png"/>
+        <view>开始自我测评</view>
+      </navigator>
+      <view class="seperator"/>
+      <navigator url="../enroll-set/index" class="nav-item">
+        <button class="invite-button" open-type="share">
+          <image class="icon" src="/image/partner-eval.png"/>
+          <view>邀请他人测评</view>
+        </button>
+      </navigator>
+      <view class="seperator"/>
+      <navigator bindtap="watchReport" class="nav-item">
+        <image class="icon" src="/image/eval-report.png"/>
+        <view>查看测评报告</view>
+      </navigator>
+    </view>
+  </view>
+</view>
