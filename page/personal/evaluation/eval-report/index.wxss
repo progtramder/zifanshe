@@ -1,1 +1,12 @@
-/* miniprogram/page/personal/evaluation/eval-report/index.wxss */
+.prelude {
+  margin: 15rpx;
+  white-space: pre-wrap;
+  font-size: 28rpx;
+  color: gray;
+}
+.overview-chart {
+  margin: 20rpx;
+}
+.seperator {
+  height: 2rem;
+}

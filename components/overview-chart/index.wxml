@@ -1,0 +1,14 @@
+<view class="kind-wrapper">
+  <view class="factor"></view>
+  <view class="label">自评</view>
+  <view class="label">同伴</view>
+  <view class="label">参考评分</view>
+</view>
+<block wx:for="{{self}}"  wx:for-index="index" wx:key="index">
+  <view class="kind-wrapper">
+    <view class="factor">{{self[index].factor}}</view>
+    <view class="self-eval">{{self[index].average}}</view>
+    <view class="group-eval">{{group[index].average}}</view>
+    <view class="ref-eval">{{reference[index].average}}</view>
+  </view>
+</block>

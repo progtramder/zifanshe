@@ -1,2 +1,22 @@
-<!--miniprogram/page/personal/evaluation/eval-report/index.wxml-->
-<text>miniprogram/page/personal/evaluation/eval-report/index.wxml</text>
+<view class="container">
+  <view class="page-body">
+  <view class="prelude">本报告是根据自我测评和他人测评的基础上为你提供的分析报告。主要针对独立顾问所必备的36个能力维度向你提供反馈。本报告旨在帮助你提高个人作为独立顾问的能力，实现长期发展。这36个能力维度分为自我认知能力和专业能力2个部分。</view>
+  <view class="seperator" />
+  <view>
+    <view style="font-weight:bold;text-align:center;font-size:40rpx;">自我认知能力部分</view>
+    <view class="seperator" />
+    <view class="overview-chart">
+      <overview-chart id="overview_chart1" part="自我认知能力"></overview-chart>
+    </view>
+  </view>
+  <view class="seperator" />
+  <view>
+    <view style="font-weight:bold;text-align:center;font-size:40rpx;">专业能力部分</view>
+    <view class="seperator" />
+    <view class="overview-chart">
+      <overview-chart id="overview_chart2" part="专业能力"></overview-chart>
+    </view>
+  </view>
+
+  </view>
+</view>

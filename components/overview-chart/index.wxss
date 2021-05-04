@@ -1,0 +1,37 @@
+.kind-wrapper {
+  height: 2rem;
+  border-bottom-style: solid;
+  border-bottom-width: 3rpx;
+  border-color: gray;
+  display: flex;
+}
+.factor {
+  width: 40%;
+  line-height: 2rem;
+}
+.self-eval {
+  background-color: #657492;
+  line-height:  2rem;
+  text-align: center;
+  width: 20%;
+}
+
+.group-eval {
+  background-color: #719742;
+  line-height: 2rem;
+  text-align: center;
+  width: 20%;
+}
+.ref-eval {
+  background-color: #9B9689;
+  line-height: 2rem;
+  width: 20%;
+  text-align: center;
+  flex-grow: 1;
+}
+.label {
+  line-height: 2rem;
+  text-align: center;
+  width: 20%;
+  font-size: 28rpx;
+}

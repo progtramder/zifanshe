@@ -1,5 +1,7 @@
 {
   "navigationBarTitleText": "",
-  "usingComponents": {},
-  "pageOrientation": "landscape"
+  "usingComponents": {
+    "overview-chart": "/components/overview-chart/index"
+  },
+  "pageOrientation": "portrait"
 }

@@ -45,10 +45,12 @@ TabPage({
   },
 
   join() {
-    wx.getSetting({
+    /*wx.getSetting({
       success : (res) => {
         if (res.authSetting['scope.userInfo']) {
-          wx.getUserInfo({
+          wx.getUserProfile({
+            desc: 'desc',
+          })({
             success: (res) => {
               app.setUserInfo(res.userInfo)
               wx.navigateTo({
@@ -62,6 +64,9 @@ TabPage({
           })
         }
       }
+    })*/
+    wx.navigateTo({
+      url: '../main/authentication/authentication',
     })
   }
 })

@@ -1,7 +1,13 @@
 <view class="page-container">
   <text>欢迎来到子繁社顾问平台</text>
   <text>一键登录，开启互动</text>
+  <!--
   <button class="auth-button" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">
+    <image src="/image/wechat.png"></image>
+    <text>使用微信登陆</text>
+  </button>
+  -->
+  <button class="auth-button" bindtap="getUserProfile">
     <image src="/image/wechat.png"></image>
     <text>使用微信登陆</text>
   </button>
