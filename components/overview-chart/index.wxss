@@ -4,6 +4,7 @@
   border-bottom-width: 3rpx;
   border-color: gray;
   display: flex;
+  font-size: 20rpx;
 }
 .factor {
   width: 40%;
@@ -33,5 +34,4 @@
   line-height: 2rem;
   text-align: center;
   width: 20%;
-  font-size: 28rpx;
 }

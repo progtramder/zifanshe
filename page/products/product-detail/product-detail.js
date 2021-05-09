@@ -12,7 +12,7 @@ Page({
       wx.showNavigationBarLoading()
       if (!app.getOpenId()) {
         const res = await wx.cloud.callFunction({ name: 'login' })
-        const { openId } = res.result
+        const openId = res.result.OPENID
         app.setOpenId(openId)
       }
 

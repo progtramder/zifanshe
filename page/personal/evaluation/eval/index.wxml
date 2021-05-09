@@ -1,5 +1,6 @@
 <view class="container">
   <view class="page-body">
+    <view class="prelude">{{prelude}}</view>
     <view wx:for="{{result['自我认知能力']}}" wx:for-index="index1" wx:key="item" class="eval-item-wrapper">
       <view class="factor">{{item.factor}}</view>
       <view class="definition">{{item.definition}}</view>

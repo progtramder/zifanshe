@@ -1,3 +1,6 @@
+.container {
+  background-color: white;
+}
 .prelude {
   margin: 15rpx;
   white-space: pre-wrap;
@@ -9,4 +12,26 @@
 }
 .seperator {
   height: 2rem;
+}
+
+.overview-radar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+canvas {
+  width: 320px;
+  height: 220px;
+}
+
+.logo-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.logo {
+  width: 200rpx;
+  height: 200rpx;
+  display: inline-block;
 }

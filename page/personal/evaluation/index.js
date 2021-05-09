@@ -20,8 +20,8 @@ Page({
         if (d._openid == openId) {
           return true
         }
-        return false
       }
+      return false
     }
     if (res.data.length < 5 || !selfEvaluated()) {
       alert('测评报告必须完成自评以及至少4份他人测评的基础上才能生成')

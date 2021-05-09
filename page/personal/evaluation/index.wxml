@@ -10,7 +10,7 @@
       <navigator url="../enroll-set/index" class="nav-item">
         <button class="invite-button" open-type="share">
           <image class="icon" src="/image/partner-eval.png"/>
-          <view>邀请他人测评</view>
+          <view>邀请同伴测评</view>
         </button>
       </navigator>
       <view class="seperator"/>
