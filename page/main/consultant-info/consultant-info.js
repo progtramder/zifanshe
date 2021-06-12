@@ -168,6 +168,7 @@ Page({
         referral: this.data.referral,
         zifanCourse: this.data.zifanCourse,
         grade: 0,
+        gender: app.getUserInfo().gender,
         status: 'verifying'
       },
       success: (res) => {

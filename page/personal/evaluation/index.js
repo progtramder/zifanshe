@@ -8,7 +8,8 @@ Page({
      const res = await db.collection('consultant').doc(openId).get()
      this.setData({
        openId: openId,
-       name: res.data.name
+       name: res.data.name,
+       gender: res.data.gender ? res.data.gender : 0
      })
   },
   async watchReport() {

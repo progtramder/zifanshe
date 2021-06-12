@@ -2,7 +2,7 @@
   <view class="page-body">
     <view class="body-wrapper">
       <view class="seperator"/>
-      <navigator url="eval/index?consultant={{openId}}&name={{name}}" class="nav-item">
+      <navigator url="eval/index?consultant={{openId}}&name={{name}}&gender={{gender}}" class="nav-item">
         <image class="icon" src="/image/self-eval.png"/>
         <view>开始自我测评</view>
       </navigator>

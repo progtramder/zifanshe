@@ -19,17 +19,22 @@ Page({
   },
 
   viewDocument() {
-    wx.showLoading()
+    wx.showLoading({
+      title: '正在下载文件',
+    })
     wx.cloud.downloadFile({
       fileID: this.data.product.document,
       success: function (res) {
-        wx.hideLoading()
         wx.openDocument({
           filePath: res.tempFilePath,
+          fileType: 'pdf'
         })
       },
       fail: function (res) {
         console.log(res);
+      },
+      complete: function () {
+        wx.hideLoading()
       }
     })
   },

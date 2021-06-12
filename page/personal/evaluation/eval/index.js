@@ -139,7 +139,13 @@ Page({
         model = initModel('我')
         prelude = '您好！欢迎入驻子繁社，并自愿进行独立顾问能力测评！本测评是基于子繁咨询独家开发的独立顾问能力模型而研发的测评工具，仅作为您想成为独立顾问的能力评价参考！测评分两个部分，自我评估和他人评估。他人评估部分请邀请熟悉您的四位工作伙伴进行评估。'
       } else {
-        model = initModel('TA')
+        if (options.gender == 1) {
+          model = initModel('他')
+        } else if (options.gender == 2) {
+          model = initModel('她')
+        } else {
+          model = initModel('TA')
+        }
         prelude = `您好！欢迎您进入独立顾问能力测评小程序！邀请您为您的伙伴${options.name}进行独立顾问能力评估！感谢您的支持！`
       }
 
